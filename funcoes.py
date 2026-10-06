@@ -41,4 +41,18 @@ def posiciona_frota(F):
         for j in i:
             for x,y in j:
                 T[x][y] = 1
+
     return T
+
+def afundados(F,T):
+    a=0 # numero de navios afundados 
+    k=0 # contador
+    for i in F.values():
+        for j in i:
+            k=0
+            for x,y in j:
+                if T[x][y] == 'X':
+                    k+=1
+            if k == len(j):
+                a+=1
+    return a
