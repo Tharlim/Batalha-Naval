@@ -11,15 +11,15 @@ def define_posicoes(x,y,o,l):
 
     return A
 
-def preenche_frota(A,n,x,y,o,l):
-    # A= frota atual, x = linha, y = coluna, o = orientação, l= tamanho, n= nome da frota
+def preenche_frota(F,n,x,y,o,l):
+    # F= frota atual, x = linha, y = coluna, o = orientação, l= tamanho, n= nome da frota
 
-    if n not in A:
-        A[n]=[define_posicoes(x,y,o,l)]
+    if n not in F:
+        F[n]=[define_posicoes(x,y,o,l)]
     else:
-        A[n].append(define_posicoes(x,y,o,l))
+        F[n].append(define_posicoes(x,y,o,l))
 
-    return A
+    return F
 
 def faz_jogada(T,x,y):
     # T= tabuleiro, x = linha, y = coluna
@@ -28,4 +28,17 @@ def faz_jogada(T,x,y):
     if T[x][y] == 1:
         T[x][y] = 'X'
 
+    return T
+
+def posiciona_frota(F):
+    T=[]
+    for i in range(10):
+        T.append([])
+        for j in range(10):
+            T[i].append(0)
+
+    for i in F.values():
+        for j in i:
+            for x,y in j:
+                T[x][y] = 1
     return T
