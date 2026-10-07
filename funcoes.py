@@ -56,3 +56,17 @@ def afundados(F,T):
             if k == len(j):
                 a+=1
     return a
+
+def posicao_valida(F,x,y,o,l):
+    A = define_posicoes(x,y,o,l)
+    for i in F.values():
+        for j in i:
+            for k in A:
+                if k in j:
+                    return False
+    for x1,y1 in A:
+        if x1>9 or x1<0:
+            return False
+        if y1>9 or y1<0:
+            return False
+    return True
